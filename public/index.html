@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="angularTodo">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Paginas Amarillas</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap
+	.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+		<!--Cabecera-->
+		<div class="jumbotron text-center">
+			<h1>Paginas Amarillas</h1>
+		</div>
+		<!--Formulario para insertar nuevos Todo-->
+		<div id="listado-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg text-center" name="what"								placeholder="¿Que es lo que buscas?"
+								ng-model="formData.what">
+						<input type="text" class="form-control input-lg text-center" name="city"
+								placeholder="Ciudad"
+								ng-model="formData.city">
+					</div>
+					<button class="btn btn-primary btn-lg" ng-click="createListado()">Buscar</button>
+					<button class="btn btn-primary btn-lg" ng-click="deleteListado()">Eliminar listado</button>
+					<butaton class="btn btn-primary btn-lg" ng-click="getthefile()">Download</button>	
+				</form>
+			</div>
+		</div>
+		<!--Lista de Todos-->
+		<div id="todo-list" class="row">
+			<div class="col-sm-9 col-sm-offset-3">
+				<div ng-repeat="registro in listados">
+					<div>{{ registro.name }}</div>
+					<div>{{ registro.email }}</div>
+				</div>
+
+			</div>
+		</div>
+
+		
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

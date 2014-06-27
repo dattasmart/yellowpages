@@ -1,0 +1,11 @@
+{
+  "name": "PaginasAmarillas",
+  "description": "Exporta datos de Paginas Amarillas",
+  "repository": "https://github.com/angular/angular-seed",
+  "devDependencies": {
+  	"express" : "~3.4.4",
+    "request" : "*",
+    "mongoose" : "~3.6.2",
+    "cheerio" : "*"
+  }
+}

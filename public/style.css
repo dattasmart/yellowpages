@@ -1,0 +1,12 @@
+#todo-list > div > div {
+	display: table-row;
+}
+
+#todo-list > div > div > div {
+	display: table-cell;
+	padding: 10px;
+}
+
+#todo-list > div > div:nth-child(2n) {
+	background-color: #99CCCC;
+}
