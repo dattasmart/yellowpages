@@ -12,18 +12,24 @@ emailsDirectory.controller('mainController', function ($scope, $http, ngTablePar
             	
             	getData: function ($defer, params) {
 				     /* make ajax call */
-				    dataService.getData(function(data) {
-				        /* now we have data to work with*/
-				        $scope.data = data;
-
-				        var filteredData = $filter('filter')(data, $scope.filter);
+				        var filteredData = $filter('filter')($scope.data, $scope.filter);
 				        var orderedData = params.sorting() ? $filter('orderBy')(filteredData, params.orderBy()) : filteredData;
 				        /* and can resolve table promise  */
 				        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-				        params.total(data.length);
-		        	});
+				        params.total($scope.data.length);
             	}
             });
+
+	$scope.getSavedList = function(){
+		$http.get('/api/todos', $scope.formData)
+			.success(function(data) {
+				$scope.data = data;
+				$scope.tableParams.reload();
+			})
+			.error(function(data) {
+				console.log('Error:' + data);
+			});
+	};
 
 	// Cuando se añade un nuevo TODO, manda el texto a la API
 	$scope.createListado = function(){
