@@ -1,17 +1,16 @@
 <!doctype html>
-<html lang="en" ng-app="angularTodo">
+<html lang="en" ng-app="emailsDirectory">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Paginas Amarillas</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap
-	.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
-<body ng-controller="mainController">
-	<div class="container">
+<body>
+	<div class="container" ng-controller="mainController">
 		<!--Cabecera-->
-		<div class="jumbotron text-center">
+		<div class="text-center">
 			<h1>Paginas Amarillas</h1>
 		</div>
 		<!--Formulario para insertar nuevos Todo-->
@@ -31,22 +30,28 @@
 				</form>
 			</div>
 		</div>
-		<!--Lista de Todos-->
-		<div id="todo-list" class="row">
-			<div class="col-sm-9 col-sm-offset-3">
-				<div ng-repeat="registro in listados">
-					<div>{{ registro.name }}</div>
-					<div>{{ registro.email }}</div>
-				</div>
+		<!--<a class="btn btn-primary" ng-mousedown="csv.generate()" ng-href="{{ csv.link() }}" download="test.csv">Export to CSV</a>-->
 
-			</div>
-		</div>
+		<table ng-table="tableParams" class="table ng-table-responsive">
+            <tr ng-repeat="registro in $data">
+                <td data-title="'Name'">
+                    {{ registro.name }}
+                </td>
+                <td data-title="'Email'">
+                    {{ registro.email }}
+                </td>
+            </tr>
+        </table>
 
 		
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-	<script src="main.js"></script>
+	<script src="/scripts/main.js"></script>
+	<script src="/scripts/dataService.js"></script>
+	<script src="/scripts/ng-table/ng-table.js"></script>
+	<script src="/scripts/ng-table/ng-table-export.js"></script>
+	<script type="text/javascript" src="/scripts/angular-route/angular-route.js"></script>
 </body>
 </html>
